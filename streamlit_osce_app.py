@@ -235,12 +235,15 @@ def render_api_key_entry():
             except Exception as e:
                 st.error(f"Invalid API Key. Please try again. Error: {e}")
 
+# CORRECTED VERSION
+
 def render_scenario_selection():
     """Displays the screen to select a patient scenario."""
     st.header("Select a Patient Scenario")
     
     for scenario_name in SCENARIOS.keys():
-        if st.button(scenario_name, use_container_width=True, height=50):
+        # The 'height=50' parameter has been removed from this line
+        if st.button(scenario_name, use_container_width=True):
             # Reset state for a new encounter
             st.session_state.current_scenario = SCENARIOS[scenario_name]
             st.session_state.conversation_history = []
