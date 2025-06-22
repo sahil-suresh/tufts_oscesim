@@ -303,7 +303,7 @@ def render_main_encounter():
         for message in st.session_state.conversation_history:
             if message["role"] == "system":
                 # Don't show the initial system prompt, but show system messages
-                if not message["content"].startswith("You are an AI patient simulator"):
+                if not message["content"].strip().startswith("You are an AI patient simulator"):
                     chat_container.info(message["content"])
             else:
                 with chat_container.chat_message(message["role"]):
